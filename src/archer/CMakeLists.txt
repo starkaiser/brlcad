@@ -73,6 +73,7 @@ set(archer_wizard_FILES
   plugins/Wizards/humanwizard.tcl
   plugins/Wizards/tankwizard.tcl
   plugins/Wizards/tirewizard.tcl
+  plugins/Wizards/gearswizard.tcl
   )
 BRLCAD_ADDDATA(archer_wizard_FILES plugins/archer/Wizards)
 
@@ -80,6 +81,7 @@ BRLCAD_ADDDATA(plugins/Wizards/humanwizard/HumanWizard.tcl plugins/archer/Wizard
 BRLCAD_ADDDATA(plugins/Wizards/tankwizard/TankWizard.tcl plugins/archer/Wizards/tankwizard)
 BRLCAD_ADDDATA(plugins/Wizards/tankwizard/images/tank.png plugins/archer/Wizards/tankwizardIA/images)
 BRLCAD_ADDDATA(plugins/Wizards/tirewizard/TireWizard.tcl plugins/archer/Wizards/tirewizard)
+BRLCAD_ADDDATA(plugins/Wizards/gearswizard/GearsWizard.tcl plugins/archer/Wizards/gearswizard)
 
 set(archer_txt
   archer_ack.txt
