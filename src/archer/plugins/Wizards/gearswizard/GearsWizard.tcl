@@ -47,6 +47,29 @@
     }
 
     protected {
+		variable local2base 1
+	variable archer ""
+	variable archersGed
+	variable statusMsg ""
+
+	variable closedIcon
+	variable openIcon
+	variable nodeIcon
+	variable mkillIcon
+
+	variable maxSideWallRadius 240
+	variable rimDiameter 17
+	variable rimWidth 8
+	variable tireThickness 8
+	variable tireWidth 215
+	variable tireAspect 70
+	variable treadPattern 1
+	variable treadPatternString Car
+	variable treadPatternCount 30
+	variable treadType 1
+	variable treadTypeString Small
+	variable treadDepth 8
+	variable createWheel 1
 	method initWizardState {}
 	method buildParameter {parent}
 	method buildParameterView {parent}
@@ -63,7 +86,39 @@
 #
 #
 ::itcl::body GearsWizard::constructor {_archer _wizardTop _wizardState _wizardOrigin _originUnits args} {
-    
+    global env
+
+    itk_component add pane {
+	iwidgets::panedwindow $itk_interior.pane \
+	    -orient vertical
+    } {}
+
+    buildParameter $itk_interior
+
+    grid rowconfigure $itk_interior 0 -weight 1
+    grid columnconfigure $itk_interior 0 -weight 1
+
+    set archer $_archer
+    set archersGed [Archer::pluginGed $archer]
+
+    # process options
+    eval itk_initialize $args
+
+    set wizardTop $_wizardTop
+    setWizardState $_wizardState
+    set wizardOrigin $_wizardOrigin
+    set wizardAction buildTire
+    set wizardXmlAction buildTireXML
+    set wizardUnits in
+
+    set savedUnits [$archersGed units -s]
+    $archersGed units $_originUnits
+    set sf1 [$archersGed local2base]
+    $archersGed units $wizardUnits
+    set sf2 [$archersGed base2local]
+    set sf [expr {$sf1 * $sf2}]
+    set wizardOrigin [vectorScale $wizardOrigin $sf]
+    $archersGed units $savedUnits
 }
 
 ::itcl::body GearsWizard::destructor {} {
@@ -86,7 +141,6 @@
 	}
     }
 
-    setstanceString
 }
 
 ::itcl::body GearsWizard::buildParameter {parent} {
