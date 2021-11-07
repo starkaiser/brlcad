@@ -108,30 +108,6 @@
 		
 		variable loadType "Power, Speed -> Torque"
 		variable resultsStrength
-		
-		variable local2base 1
-	variable archer ""
-	variable archersGed
-	variable statusMsg ""
-
-	variable closedIcon
-	variable openIcon
-	variable nodeIcon
-	variable mkillIcon
-
-	variable maxSideWallRadius 240
-	variable rimDiameter 17
-	variable rimWidth 8
-	variable tireThickness 8
-	variable tireWidth 215
-	variable tireAspect 70
-	variable treadPattern 1
-	variable treadPatternString Car
-	variable treadPatternCount 30
-	variable treadType 1
-	variable treadTypeString Small
-	variable treadDepth 8
-	variable createWheel 1
 	
 	method initWizardState {}
 	method buildParameter {parent}
