@@ -133,10 +133,9 @@
     } {}
 
     buildParameter $itk_interior
-
-    grid rowconfigure $itk_interior 0 -weight 1
-    grid columnconfigure $itk_interior 0 -weight 1
-
+    # don't need this (I think)
+    #grid rowconfigure $itk_interior 0 -weight 1
+    #grid columnconfigure $itk_interior 0 -weight 1
     set archer $_archer
     set archersGed [Archer::pluginGed $archer]
 
@@ -184,21 +183,71 @@
 
 ::itcl::body GearsWizard::buildParameter {parent} {
     buildParameterView $parent
-
-    grid rowconfigure $parent 0 -weight 1
-    grid columnconfigure $parent 0 -weight 1
+    
+    # don't need this (I think)
+    #grid rowconfigure $parent 0 -weight 1
+    #grid columnconfigure $parent 0 -weight 1
 }
 
 
 ::itcl::body GearsWizard::buildParameterView {parent} {
-itk_component add paramScroll {
-	iwidgets::scrolledframe $parent.paramScroll \
-	    -hscrollmode dynamic \
-	    -vscrollmode dynamic
+    # Create a tabnotebook
+    itk_component add tabNoteBook {
+		::ttk::notebook $parent.noteBook
     } {}
-    $itk_component(paramScroll) configure -background $ArcherCore::LABEL_BACKGROUND_COLOR
-    set newParent [$itk_component(paramScroll) childsite]
+    
+    
+    # Create the frame for the design tab
+    itk_component add paramDesignTab {
+		::ttk::frame $itk_component(tabNoteBook).designTab
+    } {}
+    
+    # Create the frame for the strength calculations
+    itk_component add paramStrengthTab {
+		::ttk::frame $itk_component(tabNoteBook).strengthTab
+    } {}
+    
+    itk_component add paramGearRatio {
+		::ttk::label $itk_component(paramDesignTab).gearRatioL \
+	    -text "Gear Ratio:"
+	} {}
+	
+	itk_component add paramModule {
+		::ttk::label $itk_component(paramDesignTab).moduleL \
+	    -text "Module (mm):"
+	} {}
+	
+	itk_component add paramPressureAngle {
+		::ttk::label $itk_component(paramDesignTab).pressureAngleL \
+	    -text "Pressure Angle (deg):"
+	} {}
+	
+	itk_component add paramHelixAngle {
+		::ttk::label $itk_component(paramDesignTab).helixAngleL \
+	    -text "Helix Angle (deg)"
+	} {}
+	
+	itk_component add paramCenterDistance {
+		::ttk::label $itk_component(paramDesignTab).centerDistanceL \
+	    -text "Center Distance (mm):" \
+	} {}
+	
+	itk_component add paramTotalProfileShift {
+		::ttk::label $itk_component(paramDesignTab).totalProfileShiftL \
+	    -text "Total Profile Shift (mm):" \
+	} {}
+    
+    $itk_component(tabNoteBook) add $itk_component(paramDesignTab) -text "Design" 
+    $itk_component(tabNoteBook) add $itk_component(paramStrengthTab) -text "Strength Calculation" 
 
+	pack $itk_component(paramGearRatio) -anchor nw
+	pack $itk_component(paramModule) -anchor nw
+	pack $itk_component(paramPressureAngle) -anchor nw
+	pack $itk_component(paramHelixAngle) -anchor nw
+	pack $itk_component(paramCenterDistance) -anchor nw
+	pack $itk_component(paramTotalProfileShift) -anchor nw
+	
+    pack $itk_component(tabNoteBook) -expand 1 -fill both
 }
 
 ::itcl::body GearsWizard::addWizardAttrs {obj {onlyTop 1}} {
