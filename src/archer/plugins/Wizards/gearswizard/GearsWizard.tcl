@@ -207,45 +207,110 @@
 		::ttk::frame $itk_component(tabNoteBook).strengthTab
     } {}
     
-    itk_component add paramGearRatio {
-		::ttk::label $itk_component(paramDesignTab).gearRatioL \
+
+	itk_component add paramCommonL {
+		::ttk::label $itk_component(paramDesignTab).commonL \
+	    -text "Common Parameters"
+	} {}
+
+    itk_component add paramCommonFrame {
+	    iwidgets::labeledframe $itk_component(paramDesignTab).commonFrame 
+	}
+    
+    
+    # Labels for the input common parameters
+    itk_component add paramGearRatioL {
+		::ttk::label $itk_component(paramCommonFrame).gearRatioL \
 	    -text "Gear Ratio:"
 	} {}
 	
-	itk_component add paramModule {
-		::ttk::label $itk_component(paramDesignTab).moduleL \
+	itk_component add paramModuleL {
+		::ttk::label $itk_component(paramCommonFrame).moduleL \
 	    -text "Module (mm):"
 	} {}
 	
-	itk_component add paramPressureAngle {
-		::ttk::label $itk_component(paramDesignTab).pressureAngleL \
+	itk_component add paramPressureAngleL {
+		::ttk::label $itk_component(paramCommonFrame).pressureAngleL \
 	    -text "Pressure Angle (deg):"
 	} {}
 	
-	itk_component add paramHelixAngle {
-		::ttk::label $itk_component(paramDesignTab).helixAngleL \
+	itk_component add paramHelixAngleL {
+		::ttk::label $itk_component(paramCommonFrame).helixAngleL \
 	    -text "Helix Angle (deg)"
 	} {}
 	
-	itk_component add paramCenterDistance {
-		::ttk::label $itk_component(paramDesignTab).centerDistanceL \
+	itk_component add paramCenterDistanceL {
+		::ttk::label $itk_component(paramCommonFrame).centerDistanceL \
 	    -text "Center Distance (mm):" \
 	} {}
 	
-	itk_component add paramTotalProfileShift {
-		::ttk::label $itk_component(paramDesignTab).totalProfileShiftL \
+	itk_component add paramTotalProfileShiftL {
+		::ttk::label $itk_component(paramCommonFrame).totalProfileShiftL \
 	    -text "Total Profile Shift (mm):" \
 	} {}
+	
+	# Entries for the common input parameters
+	itk_component add paramGearRatioE {
+	::ttk::entry $itk_component(paramCommonFrame).gearRatioE \
+	    -textvariable [::itcl::scope gearRatio]
+    } {}
+    
+    itk_component add paramModuleE {
+	::ttk::entry $itk_component(paramCommonFrame).moduleE \
+	    -textvariable [::itcl::scope module]
+    } {}
+    
+    itk_component add paramPressureAngleE {
+	::ttk::entry $itk_component(paramCommonFrame).pressureAngleE \
+	    -textvariable [::itcl::scope pressureAngle]
+    } {}
+    
+    itk_component add paramHelixAngleE {
+	::ttk::entry $itk_component(paramCommonFrame).helixAngleE \
+	    -textvariable [::itcl::scope helixAngle]
+    } {}
+    
+    itk_component add paramCenterDistanceE {
+	::ttk::entry $itk_component(paramCommonFrame).centerDistanceE \
+	    -textvariable [::itcl::scope centerDistance]
+    } {}
+    
+    itk_component add paramTotalProfileShiftE {
+	::ttk::entry $itk_component(paramCommonFrame).totalProfileShiftE \
+	    -textvariable [::itcl::scope totalProfileShift]
+    } {}
     
     $itk_component(tabNoteBook) add $itk_component(paramDesignTab) -text "Design" 
     $itk_component(tabNoteBook) add $itk_component(paramStrengthTab) -text "Strength Calculation" 
+    
+    pack $itk_component(paramCommonL) -anchor nw
+    pack $itk_component(paramCommonFrame) -anchor nw
+    
+    set row 0
+    grid $itk_component(paramGearRatioL) $itk_component(paramGearRatioE) \
+	-row $row -stick nsew
+    incr row
+    grid $itk_component(paramModuleL) $itk_component(paramModuleE) \
+	-row $row -stick nsew
+    incr row
+    grid $itk_component(paramPressureAngleL) $itk_component(paramPressureAngleE) \
+	-row $row -stick nsew
+    incr row
+    grid $itk_component(paramHelixAngleL) $itk_component(paramHelixAngleE) \
+	-row $row -stick nsew
+    incr row
+    grid $itk_component(paramCenterDistanceL) $itk_component(paramCenterDistanceE) \
+	-row $row -stick nsew
+    incr row
+    grid $itk_component(paramTotalProfileShiftL) $itk_component(paramPressureAngleE) \
+	-row $row -stick nsew
 
-	pack $itk_component(paramGearRatio) -anchor nw
-	pack $itk_component(paramModule) -anchor nw
-	pack $itk_component(paramPressureAngle) -anchor nw
-	pack $itk_component(paramHelixAngle) -anchor nw
-	pack $itk_component(paramCenterDistance) -anchor nw
-	pack $itk_component(paramTotalProfileShift) -anchor nw
+	#pack $itk_component(paramGearRatioL) -anchor nw
+	#pack $itk_component(paramModuleL) -anchor nw
+	#pack $itk_component(paramPressureAngleL) -anchor nw
+	#pack $itk_component(paramHelixAngleL) -anchor nw
+	#pack $itk_component(paramCenterDistanceL) -anchor nw
+	#pack $itk_component(paramTotalProfileShiftL) -anchor nw
 	
     pack $itk_component(tabNoteBook) -expand 1 -fill both
 }
