@@ -47,6 +47,68 @@
     }
 
     protected {
+		# Input parameters for the drive
+		# angles - deg; distances and module - mm; others - unitless
+		variable gearRatio 1.0
+		variable pressureAngle 20.0
+		variable helixAngle 0.0
+		variable module 1.0
+		variable centerDistance 15.0
+		variable totalProfileShift 0.0
+		variable numberOfTeeth1 10
+		variable numberOfTeeth2 20
+		variable facewidth1 10.0
+		variable facewidth2 10.0
+		variable profileShift1 0.0
+		variable profileShift2 0.0
+		# middle gap for double helical gears (0 - herringbone gears)
+		variable middleGap1 0.0
+		variable middleGap2 0.0
+		
+		# Variables for checkboxes
+		variable enablePinion 1
+		variable enableGear 1
+		variable enableGearUnitSize 0
+		variable strengthCalculation 1
+		variable doubleHelical 0
+		
+		variable inputType "Number of Teeth"
+		variable designGuide "Total Profile Shift"
+		variable driveType "Pinion and Gear"
+		variable dimensionsDisplay "Pinion"
+		
+		# Variables for the unit sizes of the gears
+		# all values here - unitless
+		variable unitSizeA1 1.0
+		variable unitSizeC1 0.25
+		variable unitSizeR1 0.35
+		variable unitSizeA2 1.0
+		variable unitSizeC2 0.25
+		variable unitSizeR2 0.35
+		
+		# Variables to display results and the technical drawing of a general drive
+		variable resultsDesign
+		variable drawing
+		
+		# Variables for strength calculation
+		# power - kW; speed - rpm; torque - Nm; bending stress - MPa; others - unitless
+		variable power1 0.01
+		variable power2 1.5
+		variable speed1 100.0
+		variable speed2 1.5
+		variable torque1 1.5
+		variable torque2 1.5
+		
+		variable efficiency 0.98
+		
+		variable bendingStress1 150.0
+		variable bendingStress2 150.0
+		
+		variable safetyFactor 1.5
+		
+		variable loadType "Power, Speed -> Torque"
+		variable resultsStrength
+		
 		variable local2base 1
 	variable archer ""
 	variable archersGed
@@ -70,6 +132,7 @@
 	variable treadTypeString Small
 	variable treadDepth 8
 	variable createWheel 1
+	
 	method initWizardState {}
 	method buildParameter {parent}
 	method buildParameterView {parent}
