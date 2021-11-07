@@ -146,8 +146,8 @@
     set wizardTop $_wizardTop
     setWizardState $_wizardState
     set wizardOrigin $_wizardOrigin
-    set wizardAction buildTire
-    set wizardXmlAction buildTireXML
+    set wizardAction buildGears
+    set wizardXmlAction buildGearsXML
     set wizardUnits in
 
     set savedUnits [$archersGed units -s]
