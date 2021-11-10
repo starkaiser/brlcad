@@ -250,40 +250,41 @@
 	} {}
 	
 	# Entries for the common input parameters
+	set padWidth 13
 	itk_component add paramGearRatioE {
 	::ttk::entry $itk_component(paramCommonFrame).gearRatioE \
 	    -textvariable [::itcl::scope gearRatio] \
-	    -width 10
+	    -width $padWidth
     } {}
     
     itk_component add paramModuleE {
 	::ttk::entry $itk_component(paramCommonFrame).moduleE \
 	    -textvariable [::itcl::scope module] \
-	    -width 10
+	    -width $padWidth
     } {}
     
     itk_component add paramPressureAngleE {
 	::ttk::entry $itk_component(paramCommonFrame).pressureAngleE \
 	    -textvariable [::itcl::scope pressureAngle] \
-	    -width 10
+	    -width $padWidth
     } {}
     
     itk_component add paramHelixAngleE {
 	::ttk::entry $itk_component(paramCommonFrame).helixAngleE \
 	    -textvariable [::itcl::scope helixAngle] \
-	    -width 10
+	    -width $padWidth
     } {}
     
     itk_component add paramCenterDistanceE {
 	::ttk::entry $itk_component(paramCommonFrame).centerDistanceE \
 	    -textvariable [::itcl::scope centerDistance] \
-	    -width 10
+	    -width $padWidth
     } {}
     
     itk_component add paramTotalProfileShiftE {
 	::ttk::entry $itk_component(paramCommonFrame).totalProfileShiftE \
 	    -textvariable [::itcl::scope totalProfileShift] \
-	    -width 10
+	    -width $padWidth
     } {}
     
     # Create the image for the technical drawing
@@ -452,32 +453,33 @@
 	
 	
 	set row 0
+	set padAmount 12
 	grid $itk_component(paramPinionCB) $itk_component(paramGearCB) \
-	-row $row -stick nsew
+	-row $row -stick nsew -padx $padAmount
 	incr row
 	grid $itk_component(paramNumberTeeth1L) $itk_component(paramNumberTeeth2L) \
-	-row $row -stick nsew
+	-row $row -stick nsew -padx $padAmount
 	incr row
 	grid $itk_component(paramNumberTeeth1E) $itk_component(paramNumberTeeth2E) \
-	-row $row -stick nsew
+	-row $row -stick nsew -padx $padAmount
 	incr row
 	grid $itk_component(paramFacewidth1L) $itk_component(paramFacewidth2L) \
-	-row $row -stick nsew
+	-row $row -stick nsew -padx $padAmount
 	incr row
 	grid $itk_component(paramFacewidth1E) $itk_component(paramFacewidth2E) \
-	-row $row -stick nsew
+	-row $row -stick nsew -padx $padAmount
 	incr row
 	grid $itk_component(paramProfileShift1L) $itk_component(paramProfileShift2L) \
-	-row $row -stick nsew
+	-row $row -stick nsew -padx $padAmount
 	incr row
 	grid $itk_component(paramProfileShift1E) $itk_component(paramProfileShift2E) \
-	-row $row -stick nsew
+	-row $row -stick nsew -padx $padAmount
 	incr row
 	grid $itk_component(paramGap1L) $itk_component(paramGap2L) \
-	-row $row -stick nsew
+	-row $row -stick nsew -padx $padAmount
 	incr row
 	grid $itk_component(paramGap1E) $itk_component(paramGap2E) \
-	-row $row -stick nsew
+	-row $row -stick nsew -padx $padAmount
 
     pack $itk_component(tabNoteBook) -expand 1 -fill both
 }
