@@ -479,20 +479,6 @@
 	grid $itk_component(paramGap1E) $itk_component(paramGap2E) \
 	-row $row -stick nsew
 
-	#pack $itk_component(paramPinionCB) -anchor nw
-	#pack $itk_component(paramGearCB) -anchor ne
-
-	#pack $itk_component(paramGearRatioL) -anchor nw
-	#pack $itk_component(paramModuleL) -anchor nw
-	#pack $itk_component(paramPressureAngleL) -anchor nw
-	#pack $itk_component(paramHelixAngleL) -anchor nw
-	#pack $itk_component(paramCenterDistanceL) -anchor nw
-	#pack $itk_component(paramTotalProfileShiftL) -anchor nw
-	
-	set row 2
-	#grid $itk_component(paramPinionCB) $itk_component(paramGearCB) -row $row -stick nsew
-
-	#grid $itk_component(tabNoteBook) -expand 1 -fill both
     pack $itk_component(tabNoteBook) -expand 1 -fill both
 }
 
