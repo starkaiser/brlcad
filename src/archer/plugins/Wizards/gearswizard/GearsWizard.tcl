@@ -207,15 +207,15 @@
 		::ttk::frame $itk_component(tabNoteBook).strengthTab
     } {}
     
-
+    
+    # Create the common parameters label and frame
 	itk_component add paramCommonL {
 		::ttk::label $itk_component(paramDesignTab).commonL \
 	    -text "Common Parameters"
 	} {}
-
     itk_component add paramCommonFrame {
-	    iwidgets::labeledframe $itk_component(paramDesignTab).commonFrame 
-	}
+	    ::ttk::frame  $itk_component(paramDesignTab).commonFrame 
+	} {}
     
     
     # Labels for the input common parameters
@@ -252,39 +252,184 @@
 	# Entries for the common input parameters
 	itk_component add paramGearRatioE {
 	::ttk::entry $itk_component(paramCommonFrame).gearRatioE \
-	    -textvariable [::itcl::scope gearRatio]
+	    -textvariable [::itcl::scope gearRatio] \
+	    -width 10
     } {}
     
     itk_component add paramModuleE {
 	::ttk::entry $itk_component(paramCommonFrame).moduleE \
-	    -textvariable [::itcl::scope module]
+	    -textvariable [::itcl::scope module] \
+	    -width 10
     } {}
     
     itk_component add paramPressureAngleE {
 	::ttk::entry $itk_component(paramCommonFrame).pressureAngleE \
-	    -textvariable [::itcl::scope pressureAngle]
+	    -textvariable [::itcl::scope pressureAngle] \
+	    -width 10
     } {}
     
     itk_component add paramHelixAngleE {
 	::ttk::entry $itk_component(paramCommonFrame).helixAngleE \
-	    -textvariable [::itcl::scope helixAngle]
+	    -textvariable [::itcl::scope helixAngle] \
+	    -width 10
     } {}
     
     itk_component add paramCenterDistanceE {
 	::ttk::entry $itk_component(paramCommonFrame).centerDistanceE \
-	    -textvariable [::itcl::scope centerDistance]
+	    -textvariable [::itcl::scope centerDistance] \
+	    -width 10
     } {}
     
     itk_component add paramTotalProfileShiftE {
 	::ttk::entry $itk_component(paramCommonFrame).totalProfileShiftE \
-	    -textvariable [::itcl::scope totalProfileShift]
+	    -textvariable [::itcl::scope totalProfileShift] \
+	    -width 10
+    } {}
+    
+    # Create the image for the technical drawing
+    image create photo imageSpur \
+    -file /home/starkaiser/CodingProjects/brlcad/src/archer/plugins/Wizards/gearswizard/images/gear_spur.png \
+    -width 200 \
+    -height 200
+    itk_component add paramImageFrame {
+	    iwidgets::labeledframe  $itk_component(paramDesignTab).imageFrame \
+	    -labelimage imageSpur
+	} {}
+    
+    
+    
+    # Create empty label
+    itk_component add emptyL {
+	::ttk::label $itk_component(paramDesignTab).emptyL \
+	    -text "" \
+	    -anchor e
+    } {}
+    
+    # Create the individual parameters label and frame
+	itk_component add paramIndL {
+		::ttk::label $itk_component(paramDesignTab).indL \
+	    -text "Individual Parameters"
+	} {}
+    itk_component add paramIndFrame {
+	    ::ttk::frame  $itk_component(paramDesignTab).indFrame 
+	} {}
+	
+    
+    itk_component add paramPinionCB {
+	::ttk::checkbutton $itk_component(paramIndFrame).pinionCB \
+	    -text "Pinion" \
+	    -variable [::itcl::scope enablePinion]
+    } {}
+    
+    itk_component add paramGearCB {
+	::ttk::checkbutton $itk_component(paramIndFrame).gearCB \
+	    -text "Gear" \
+	    -variable [::itcl::scope enableGear]
+    } {}
+    
+    
+    # Labels for the input individual parameters
+    itk_component add paramNumberTeeth1L {
+		::ttk::label $itk_component(paramIndFrame).numberTeeth1L \
+	    -text "Number of Teeth"
+	} {}
+	itk_component add paramNumberTeeth2L {
+		::ttk::label $itk_component(paramIndFrame).numberTeeth2L \
+	    -text "Number of Teeth"
+	} {}
+	
+	itk_component add paramFacewidth1L {
+		::ttk::label $itk_component(paramIndFrame).facewidth1L \
+	    -text "Facewidth"
+	} {}
+	itk_component add paramFacewidth2L {
+		::ttk::label $itk_component(paramIndFrame).facewidth2L \
+	    -text "Facewidth"
+	} {}
+	
+	itk_component add paramProfileShift1L {
+		::ttk::label $itk_component(paramIndFrame).profileShift1L \
+	    -text "Profile Shift"
+	} {}
+	itk_component add paramProfileShift2L {
+		::ttk::label $itk_component(paramIndFrame).profileShift2L \
+	    -text "Profile Shift"
+	} {}
+	
+	itk_component add paramGap1L {
+		::ttk::label $itk_component(paramIndFrame).gap1L \
+	    -text "Middle Gap"
+	} {}
+	itk_component add paramGap2L {
+		::ttk::label $itk_component(paramIndFrame).gap2L \
+	    -text "Middle Gap"
+	} {}
+	
+	
+	# Entries for the individual input parameters
+	itk_component add paramNumberTeeth1E {
+	::ttk::entry $itk_component(paramIndFrame).numberTeeth1E \
+	    -textvariable [::itcl::scope numberOfTeeth1] \
+	    -width 10
+    } {}
+    itk_component add paramNumberTeeth2E {
+	::ttk::entry $itk_component(paramIndFrame).numberTeeth2E \
+	    -textvariable [::itcl::scope numberOfTeeth2] \
+	    -width 10
+    } {}
+    
+    itk_component add paramFacewidth1E {
+	::ttk::entry $itk_component(paramIndFrame).facewidth1E \
+	    -textvariable [::itcl::scope facewidth1] \
+	    -width 10
+    } {}
+    itk_component add paramFacewidth2E {
+	::ttk::entry $itk_component(paramIndFrame).facewidth2E \
+	    -textvariable [::itcl::scope facewidth2] \
+	    -width 10
+    } {}
+    
+    itk_component add paramProfileShift1E {
+	::ttk::entry $itk_component(paramIndFrame).profileShift1E \
+	    -textvariable [::itcl::scope profileShift1] \
+	    -width 10
+    } {}
+    itk_component add paramProfileShift2E {
+	::ttk::entry $itk_component(paramIndFrame).profileShift2E \
+	    -textvariable [::itcl::scope profileShift2] \
+	    -width 10 
+    } {}
+    
+    itk_component add paramGap1E {
+	::ttk::entry $itk_component(paramIndFrame).gap1E \
+	    -textvariable [::itcl::scope middleGap1] \
+	    -width 10
+    } {}
+    itk_component add paramGap2E {
+	::ttk::entry $itk_component(paramIndFrame).gap2E \
+	    -textvariable [::itcl::scope middleGap2] \
+	    -width 10
     } {}
     
     $itk_component(tabNoteBook) add $itk_component(paramDesignTab) -text "Design" 
     $itk_component(tabNoteBook) add $itk_component(paramStrengthTab) -text "Strength Calculation" 
     
-    pack $itk_component(paramCommonL) -anchor nw
-    pack $itk_component(paramCommonFrame) -anchor nw
+    #pack $itk_component(paramCommonL) -anchor nw
+    #pack $itk_component(paramCommonFrame) -anchor nw
+    
+    set row 0
+    set col 0
+    
+    grid $itk_component(paramCommonL) -row $row -stick nsew
+	incr row
+	grid $itk_component(paramCommonFrame) -row $row -stick nsew
+	incr row
+	grid $itk_component(emptyL) -row $row -stick nsew
+	incr row
+	grid $itk_component(paramIndL) -row $row -stick nsew
+	incr row
+	grid $itk_component(paramIndFrame) -row $row -stick nsew
+	#grid $itk_component(paramImageFrame) -row $row -column 1 -stick nsew
     
     set row 0
     grid $itk_component(paramGearRatioL) $itk_component(paramGearRatioE) \
@@ -304,6 +449,38 @@
     incr row
     grid $itk_component(paramTotalProfileShiftL) $itk_component(paramPressureAngleE) \
 	-row $row -stick nsew
+	
+	
+	set row 0
+	grid $itk_component(paramPinionCB) $itk_component(paramGearCB) \
+	-row $row -stick nsew
+	incr row
+	grid $itk_component(paramNumberTeeth1L) $itk_component(paramNumberTeeth2L) \
+	-row $row -stick nsew
+	incr row
+	grid $itk_component(paramNumberTeeth1E) $itk_component(paramNumberTeeth2E) \
+	-row $row -stick nsew
+	incr row
+	grid $itk_component(paramFacewidth1L) $itk_component(paramFacewidth2L) \
+	-row $row -stick nsew
+	incr row
+	grid $itk_component(paramFacewidth1E) $itk_component(paramFacewidth2E) \
+	-row $row -stick nsew
+	incr row
+	grid $itk_component(paramProfileShift1L) $itk_component(paramProfileShift2L) \
+	-row $row -stick nsew
+	incr row
+	grid $itk_component(paramProfileShift1E) $itk_component(paramProfileShift2E) \
+	-row $row -stick nsew
+	incr row
+	grid $itk_component(paramGap1L) $itk_component(paramGap2L) \
+	-row $row -stick nsew
+	incr row
+	grid $itk_component(paramGap1E) $itk_component(paramGap2E) \
+	-row $row -stick nsew
+
+	#pack $itk_component(paramPinionCB) -anchor nw
+	#pack $itk_component(paramGearCB) -anchor ne
 
 	#pack $itk_component(paramGearRatioL) -anchor nw
 	#pack $itk_component(paramModuleL) -anchor nw
@@ -312,6 +489,10 @@
 	#pack $itk_component(paramCenterDistanceL) -anchor nw
 	#pack $itk_component(paramTotalProfileShiftL) -anchor nw
 	
+	set row 2
+	#grid $itk_component(paramPinionCB) $itk_component(paramGearCB) -row $row -stick nsew
+
+	#grid $itk_component(tabNoteBook) -expand 1 -fill both
     pack $itk_component(tabNoteBook) -expand 1 -fill both
 }
 
