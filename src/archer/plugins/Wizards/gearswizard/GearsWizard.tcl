@@ -250,7 +250,7 @@
 	} {}
 	
 	# Entries for the common input parameters
-	set padWidth 13
+	set padWidth 11
 	itk_component add paramGearRatioE {
 	::ttk::entry $itk_component(paramCommonFrame).gearRatioE \
 	    -textvariable [::itcl::scope gearRatio] \
@@ -423,7 +423,7 @@
     
     grid $itk_component(paramCommonL) -row $row -stick nsew
 	incr row
-	grid $itk_component(paramCommonFrame) -row $row -stick nsew
+	grid $itk_component(paramCommonFrame) -row $row -stick nsew -padx 10
 	incr row
 	grid $itk_component(emptyL) -row $row -stick nsew
 	incr row
@@ -453,7 +453,7 @@
 	
 	
 	set row 0
-	set padAmount 12
+	set padAmount 10
 	grid $itk_component(paramPinionCB) $itk_component(paramGearCB) \
 	-row $row -stick nsew -padx $padAmount
 	incr row
