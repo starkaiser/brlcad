@@ -108,12 +108,28 @@
 		
 		variable loadType "Power, Speed -> Torque"
 		variable resultsStrength
-	
-	method initWizardState {}
-	method buildParameter {parent}
-	method buildParameterView {parent}
+		
+		#variable spurHierarchy {
+		#	{leaf Strength}
+		#	{leaf UnitSize}
+		#}
+		
+		#variable spurArrowNameMap {
+		#	{SpurStrength spurStrengthArrow}
+		#	{SpurUnitSize spurUnitSizeArrow}
+		#}
+		
+		#method openArrow {arrowName}
+		#method buildSpurStrengthView {parent}
+		#method buildSpurUnitSizeView {parent}
+		#method toggle {parent child args}
+		#method buildArrow {parent prefix text buildViewFunc}
+		
+		method initWizardState {}
+		method buildParameter {parent}
+		method buildParameterView {parent}
 
-	method addWizardAttrs {obj {onlyTop 1}}
+		method addWizardAttrs {obj {onlyTop 1}}
     }
 
     private {
@@ -202,9 +218,9 @@
 		::ttk::frame $itk_component(tabNoteBook).designTab
     } {}
     
-    # Create the frame for the strength calculations
-    itk_component add paramStrengthTab {
-		::ttk::frame $itk_component(tabNoteBook).strengthTab
+    # Create the frame for the results tab
+    itk_component add paramResultsTab {
+		::ttk::frame $itk_component(tabNoteBook).resultsTab
     } {}
     
     
@@ -413,7 +429,7 @@
     } {}
     
     $itk_component(tabNoteBook) add $itk_component(paramDesignTab) -text "Design" 
-    $itk_component(tabNoteBook) add $itk_component(paramStrengthTab) -text "Strength Calculation" 
+    $itk_component(tabNoteBook) add $itk_component(paramResultsTab) -text "Calculation Results" 
     
     #pack $itk_component(paramCommonL) -anchor nw
     #pack $itk_component(paramCommonFrame) -anchor nw
@@ -480,6 +496,9 @@
 	incr row
 	grid $itk_component(paramGap1E) $itk_component(paramGap2E) \
 	-row $row -stick nsew -padx $padAmount
+	
+	#buildArrow $paramDesignTab strength "Strength Calculation" buildSpurStrengthView
+    #buildArrow $paramDesignTab unitTooth "Unit Tooth Size" buildSpurUnitSizeView
 
     pack $itk_component(tabNoteBook) -expand 1 -fill both
 }
