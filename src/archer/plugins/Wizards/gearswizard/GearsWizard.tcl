@@ -321,6 +321,22 @@
 	    -text "" \
 	    -anchor e
     } {}
+    itk_component add empty2L {
+	::ttk::label $itk_component(paramDesignTab).empty2L \
+	    -text "" \
+	    -anchor e
+    } {}
+    
+    # Create vertical separators
+    itk_component add separator1S {
+	::ttk::separator $itk_component(paramDesignTab).separator1 \
+	    -orient vertical
+    } {}
+    itk_component add separator2S {
+	::ttk::separator $itk_component(paramDesignTab).separator2 \
+	    -orient vertical
+    } {}
+    
     
     # Create the individual parameters label and frame
 	itk_component add paramIndL {
@@ -428,6 +444,25 @@
 	    -width 10
     } {}
     
+    
+    # Create the unit tooth size parameters label and frame
+	itk_component add paramUnitToothSizeL {
+		::ttk::label $itk_component(paramDesignTab).unitToothSizeL \
+	    -text "Unit Tooth Size"
+	} {}
+    itk_component add paramUnitToothSizeFrame {
+	    ::ttk::frame  $itk_component(paramDesignTab).unitToothSizeFrame 
+	} {}
+    
+    # Create the strength parameters label and frame
+	itk_component add paramStregthL {
+		::ttk::label $itk_component(paramDesignTab).strengthL \
+	    -text "Strength Calculation Parameters"
+	} {}
+    itk_component add paramStrengthFrame {
+	    ::ttk::frame  $itk_component(paramDesignTab).strengthFrame 
+	} {}
+    
     $itk_component(tabNoteBook) add $itk_component(paramDesignTab) -text "Design" 
     $itk_component(tabNoteBook) add $itk_component(paramResultsTab) -text "Calculation Results" 
     
@@ -440,12 +475,20 @@
     grid $itk_component(paramCommonL) -row $row -stick nsew
 	incr row
 	grid $itk_component(paramCommonFrame) -row $row -stick nsew -padx 10
+	grid $itk_component(separator1S) -row $row -column 1 -stick nsew 
 	incr row
 	grid $itk_component(emptyL) -row $row -stick nsew
 	incr row
 	grid $itk_component(paramIndL) -row $row -stick nsew
 	incr row
 	grid $itk_component(paramIndFrame) -row $row -stick nsew
+	grid $itk_component(separator2S) -row $row -column 1 -stick nsew 
+	incr row
+	grid $itk_component(empty2L) -row $row -stick nsew
+	incr row
+	grid $itk_component(paramUnitToothSizeL) -row $row -stick nsew
+	incr row
+	grid $itk_component(paramUnitToothSizeFrame) -row $row -stick nsew
 	#grid $itk_component(paramImageFrame) -row $row -column 1 -stick nsew
     
     set row 0
