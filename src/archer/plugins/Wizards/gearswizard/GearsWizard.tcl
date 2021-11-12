@@ -562,10 +562,9 @@
     
     itk_component add paramStrengthCalculationCB {
 	::ttk::checkbutton $itk_component(paramGeneralFrame).strengthCalculationCB \
-	    -text "Sterngth Calculation" \
+	    -text "Strength Calculation" \
 	    -variable [::itcl::scope strengthCalculation]
     } {}
-    
     itk_component add paramDoubleHelicalCB {
 	::ttk::checkbutton $itk_component(paramGeneralFrame).doubleHelicalCB \
 	    -text "Double Helical" \
