@@ -645,13 +645,13 @@
     grid $itk_component(paramDriveTypeL) $itk_component(paramDriveTypeCB) \
 	-row $row -stick nsew
 	incr row
-    grid $itk_component(paramStrengthCalculationCB) \
+    grid $itk_component(paramHelixDirCB) \
 	-row $row -stick nsew
 	incr row
     grid $itk_component(paramDoubleHelicalCB) \
 	-row $row -stick nsew
 	incr row
-    grid $itk_component(paramHelixDirCB) \
+    grid $itk_component(paramStrengthCalculationCB) \
 	-row $row -stick nsew
 	
 	set row 0
