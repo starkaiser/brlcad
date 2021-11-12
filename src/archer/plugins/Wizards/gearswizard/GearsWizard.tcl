@@ -627,7 +627,7 @@
     grid $itk_component(paramCenterDistanceL) $itk_component(paramCenterDistanceE) \
 	-row $row -stick nsew
     incr row
-    grid $itk_component(paramTotalProfileShiftL) $itk_component(paramPressureAngleE) \
+    grid $itk_component(paramTotalProfileShiftL) $itk_component(paramTotalProfileShiftE) \
 	-row $row -stick nsew
 	
 	
