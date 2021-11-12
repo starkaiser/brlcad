@@ -453,6 +453,68 @@
     itk_component add paramUnitToothSizeFrame {
 	    ::ttk::frame  $itk_component(paramDesignTab).unitToothSizeFrame 
 	} {}
+	
+	# Labels for the unit tooth size parameters
+    itk_component add paramAstarL {
+		::ttk::label $itk_component(paramUnitToothSizeFrame).aStarL \
+	    -text "a*"
+	} {}
+	itk_component add paramCstarL {
+		::ttk::label $itk_component(paramUnitToothSizeFrame).cStarL \
+	    -text "c*"
+	} {}
+	itk_component add paramRstarL {
+		::ttk::label $itk_component(paramUnitToothSizeFrame).rStarL \
+	    -text "r*"
+	} {}
+	
+	set comboWidth 6
+	itk_component add paramaAstar1CB {
+	::ttk::combobox $itk_component(paramUnitToothSizeFrame).aStar1CB \
+	    -textvariable [::itcl::scope unitSizeA1] \
+	    -state readonly \
+	    -values {0.8 1.0 1.2} \
+	    -width $comboWidth
+    } {}
+    itk_component add paramaAstar2CB {
+	::ttk::combobox $itk_component(paramUnitToothSizeFrame).aStar2CB \
+	    -textvariable [::itcl::scope unitSizeA2] \
+	    -state readonly \
+	    -values {0.8 1.0 1.2} \
+	    -width $comboWidth
+    } {}
+    
+    itk_component add paramaCstar1CB {
+	::ttk::combobox $itk_component(paramUnitToothSizeFrame).cStar1CB \
+	    -textvariable [::itcl::scope unitSizeC1] \
+	    -state readonly \
+	    -values {0.157 0.200 0.250 0.300 0.350 0.400} \
+	    -width $comboWidth
+    } {}
+    itk_component add paramaCstar2CB {
+	::ttk::combobox $itk_component(paramUnitToothSizeFrame).cStar2CB \
+	    -textvariable [::itcl::scope unitSizeC2] \
+	    -state readonly \
+	    -values {0.157 0.200 0.250 0.300 0.350 0.400} \
+	    -width $comboWidth
+    } {}
+	
+	itk_component add paramaRstar1CB {
+	::ttk::combobox $itk_component(paramUnitToothSizeFrame).rStar1CB \
+	    -textvariable [::itcl::scope unitSizeR1] \
+	    -state readonly \
+	    -values {0.200 0.250 0.300 0.350 0.375 0.400 0.450 0.500} \
+	    -width $comboWidth
+    } {}
+    itk_component add paramaRstar2CB {
+	::ttk::combobox $itk_component(paramUnitToothSizeFrame).rStar2CB \
+	    -textvariable [::itcl::scope unitSizeR2] \
+	    -state readonly \
+	    -values {0.200 0.250 0.300 0.350 0.375 0.400 0.450 0.500} \
+	    -width $comboWidth
+    } {}
+	
+	
     
     # Create the strength parameters label and frame
 	itk_component add paramStregthL {
@@ -488,7 +550,7 @@
 	incr row
 	grid $itk_component(paramUnitToothSizeL) -row $row -stick nsew
 	incr row
-	grid $itk_component(paramUnitToothSizeFrame) -row $row -stick nsew
+	grid $itk_component(paramUnitToothSizeFrame) -row $row -stick nsew -padx 10
 	#grid $itk_component(paramImageFrame) -row $row -column 1 -stick nsew
     
     set row 0
@@ -539,6 +601,25 @@
 	incr row
 	grid $itk_component(paramGap1E) $itk_component(paramGap2E) \
 	-row $row -stick nsew -padx $padAmount
+	
+	
+	set row 0
+	set unitPadXLeft 6
+	set unitPadXRight 15
+	grid $itk_component(paramAstarL) $itk_component(paramaAstar1CB) \
+	-row $row -stick nsew -padx $unitPadXLeft
+	grid $itk_component(paramaAstar2CB) \
+	-row $row -column 2 -stick nsew -padx $unitPadXRight
+	incr row
+	grid $itk_component(paramCstarL) $itk_component(paramaCstar1CB) \
+	-row $row -stick nsew -padx $unitPadXLeft
+	grid $itk_component(paramaCstar2CB) \
+	-row $row -column 2 -stick nsew -padx $unitPadXRight
+	incr row
+	grid $itk_component(paramRstarL) $itk_component(paramaRstar1CB) \
+	-row $row -stick nsew -padx $unitPadXLeft
+	grid $itk_component(paramaRstar2CB) \
+	-row $row -column 2 -stick nsew -padx $unitPadXRight
 	
 	#buildArrow $paramDesignTab strength "Strength Calculation" buildSpurStrengthView
     #buildArrow $paramDesignTab unitTooth "Unit Tooth Size" buildSpurUnitSizeView
