@@ -68,7 +68,7 @@
 		# Variables for checkboxes
 		variable enablePinion 1
 		variable enableGear 1
-		variable enableGearUnitSize 0
+		variable helixDir 0
 		variable strengthCalculation 1
 		variable doubleHelical 0
 		
