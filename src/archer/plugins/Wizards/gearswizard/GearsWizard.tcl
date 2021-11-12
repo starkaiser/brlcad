@@ -584,6 +584,112 @@
     itk_component add paramStrengthFrame {
 	    ::ttk::frame  $itk_component(paramDesignTab).strengthFrame 
 	} {}
+	
+	# Labels for the strength calculation parameters
+	itk_component add paramStrengthPinionL {
+		::ttk::label $itk_component(paramStrengthFrame).strengthPinionL \
+	    -text "Pinion"
+	} {}
+	itk_component add paramStrengthGearL {
+		::ttk::label $itk_component(paramStrengthFrame).strengthGearL \
+	    -text "Gear"
+	} {}
+	itk_component add paramPowerL {
+		::ttk::label $itk_component(paramStrengthFrame).powerL \
+	    -text "Power (kW):"
+	} {}
+	itk_component add paramSpeedL {
+		::ttk::label $itk_component(paramStrengthFrame).speedL \
+	    -text "Speed (rpm):"
+	} {}
+	itk_component add paramTorqueL {
+		::ttk::label $itk_component(paramStrengthFrame).torqueL \
+	    -text "Torque (Nm):"
+	} {}
+	itk_component add paramABSL {
+		::ttk::label $itk_component(paramStrengthFrame).absL \
+	    -text "Allowable Bending Stress (MPa):"
+	} {}
+	itk_component add paramEfficiencyL {
+		::ttk::label $itk_component(paramStrengthFrame).efficiencyL \
+	    -text "Efficiency:"
+	} {}
+	itk_component add paramSafetyL {
+		::ttk::label $itk_component(paramStrengthFrame).safetyL \
+	    -text "Minimal Factor of Safety:"
+	} {}
+	itk_component add paramTypeOfLoadL {
+		::ttk::label $itk_component(paramStrengthFrame).typeOfLoadL \
+	    -text "Type of Load Calculation"
+	} {}
+	
+	itk_component add paramPower1E {
+	::ttk::entry $itk_component(paramStrengthFrame).power1E \
+	    -textvariable [::itcl::scope power1] \
+	    -width 10 
+    } {}
+    itk_component add paramPower2E {
+	::ttk::entry $itk_component(paramStrengthFrame).power2E \
+	    -textvariable [::itcl::scope power2] \
+	    -width 10 
+    } {}
+    
+    itk_component add paramSpeed1E {
+	::ttk::entry $itk_component(paramStrengthFrame).speed1E \
+	    -textvariable [::itcl::scope speed1] \
+	    -width 10 
+    } {}
+    itk_component add paramSpeed2E {
+	::ttk::entry $itk_component(paramStrengthFrame).speed2E \
+	    -textvariable [::itcl::scope speed2] \
+	    -width 10 
+    } {}
+    
+    itk_component add paramTorque1E {
+	::ttk::entry $itk_component(paramStrengthFrame).torque1E \
+	    -textvariable [::itcl::scope torque1] \
+	    -width 10 
+    } {}
+    itk_component add paramTorque2E {
+	::ttk::entry $itk_component(paramStrengthFrame).torque2E \
+	    -textvariable [::itcl::scope torque2] \
+	    -width 10 
+    } {}
+    
+    itk_component add paramABS1E {
+	::ttk::entry $itk_component(paramStrengthFrame).abs1E \
+	    -textvariable [::itcl::scope bendingStress1] \
+	    -width 10 
+    } {}
+    itk_component add paramABS2E {
+	::ttk::entry $itk_component(paramStrengthFrame).abs2E \
+	    -textvariable [::itcl::scope bendingStress2] \
+	    -width 10 
+    } {}
+    
+    itk_component add paramEfficiencyE {
+	::ttk::entry $itk_component(paramStrengthFrame).efficiencyE \
+	    -textvariable [::itcl::scope efficiency] \
+	    -width 10 
+    } {}
+    itk_component add paramSafetyE {
+	::ttk::entry $itk_component(paramStrengthFrame).safetyE \
+	    -textvariable [::itcl::scope safetyFactor] \
+	    -width 10 
+    } {}
+    
+    itk_component add paramTypeOfLoadCB {
+	::ttk::combobox $itk_component(paramStrengthFrame).typeOfLoadCB \
+	    -textvariable [::itcl::scope loadType] \
+	    -state readonly \
+	    -values {"Power, Speed -> Torque" "Torque, Speed -> Power" "Power, Torque -> Speed"}
+    } {}
+    
+    itk_component add empty3L {
+	::ttk::label $itk_component(paramStrengthFrame).empty3L \
+	    -text "" \
+	    -anchor e
+    } {}
     
     $itk_component(tabNoteBook) add $itk_component(paramDesignTab) -text "Design" 
     $itk_component(tabNoteBook) add $itk_component(paramResultsTab) -text "Calculation Results" 
@@ -604,9 +710,11 @@
 	grid $itk_component(emptyL) -row $row -stick nsew
 	incr row
 	grid $itk_component(paramIndL) -row $row -stick nsew
+	grid $itk_component(paramStregthL) -row $row -column 2 -stick nsew
 	incr row
 	grid $itk_component(paramIndFrame) -row $row -stick nsew
 	grid $itk_component(separator2S) -row $row -column 1 -stick nsew 
+	grid $itk_component(paramStrengthFrame) -row $row -column 2 -stick nsew -padx 10
 	incr row
 	grid $itk_component(empty2L) -row $row -stick nsew
 	incr row
@@ -682,6 +790,42 @@
 	incr row
 	grid $itk_component(paramGap1E) $itk_component(paramGap2E) \
 	-row $row -stick nsew -padx $padAmount
+	
+	set row 0
+	grid $itk_component(paramStrengthPinionL) \
+	-row $row -column 1 -stick nsew -padx 20
+	grid $itk_component(paramStrengthGearL) \
+	-row $row -column 2 -stick nsew -padx 20
+	incr row
+	grid $itk_component(paramPowerL) $itk_component(paramPower1E) $itk_component(paramPower2E)\
+	-row $row -stick nsew
+	incr row
+	grid $itk_component(paramSpeedL) $itk_component(paramSpeed1E) $itk_component(paramSpeed2E)\
+	-row $row -stick nsew
+	incr row
+	grid $itk_component(paramTorqueL) $itk_component(paramTorque1E) $itk_component(paramTorque2E)\
+	-row $row -stick nsew
+	incr row
+	grid $itk_component(paramABSL) $itk_component(paramABS1E) $itk_component(paramABS2E)\
+	-row $row -stick nsew
+	incr row
+	grid $itk_component(paramEfficiencyL) \
+	-row $row -stick nsew 
+	grid $itk_component(paramEfficiencyE) \
+	-row $row -column 1 -stick nsew -columnspan 2 -padx 50
+	incr row
+	grid $itk_component(paramSafetyL) \
+	-row $row -stick nsew
+	grid $itk_component(paramSafetyE) \
+	-row $row -column 1 -stick nsew -columnspan 2 -padx 50
+	incr row
+	grid $itk_component(empty3L) \
+	-row $row -stick nsew
+	incr row
+	grid $itk_component(paramTypeOfLoadL) \
+	-row $row -stick nsew
+	grid $itk_component(paramTypeOfLoadCB) \
+	-row $row -column 1 -stick nsew -columnspan 2
 	
 	
 	set row 0
