@@ -570,6 +570,11 @@
 	    -text "Double Helical" \
 	    -variable [::itcl::scope doubleHelical]
     } {}
+    itk_component add paramHelixDirCB {
+	::ttk::checkbutton $itk_component(paramGeneralFrame).helixDirCB \
+	    -text "Helix Direction" \
+	    -variable [::itcl::scope helixDir]
+    } {}
     
     # Create the strength parameters label and frame
 	itk_component add paramStregthL {
@@ -644,6 +649,9 @@
 	-row $row -stick nsew
 	incr row
     grid $itk_component(paramDoubleHelicalCB) \
+	-row $row -stick nsew
+	incr row
+    grid $itk_component(paramHelixDirCB) \
 	-row $row -stick nsew
 	
 	set row 0
