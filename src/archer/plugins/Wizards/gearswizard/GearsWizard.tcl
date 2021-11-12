@@ -515,6 +515,62 @@
     } {}
 	
 	
+	# Create the general settings label and frame
+	itk_component add paramGeneralL {
+		::ttk::label $itk_component(paramDesignTab).generalL \
+	    -text "General Settings"
+	} {}
+    itk_component add paramGeneralFrame {
+	    ::ttk::frame  $itk_component(paramDesignTab).generalFrame 
+	} {}
+	
+	# Labels for the general settings
+	itk_component add paramDesignGuideL {
+		::ttk::label $itk_component(paramGeneralFrame).designGuideL \
+	    -text "Design Guide"
+	} {}
+    itk_component add paramInputTypeL {
+		::ttk::label $itk_component(paramGeneralFrame).inputTypeL \
+	    -text "Input Type"
+	} {}
+	itk_component add paramDriveTypeL {
+		::ttk::label $itk_component(paramGeneralFrame).driveTypeL \
+	    -text "Drive Type"
+	} {}
+	
+	itk_component add paramDesignGuideCB {
+	::ttk::combobox $itk_component(paramGeneralFrame).designGuideCB \
+	    -textvariable [::itcl::scope designGuide] \
+	    -state readonly \
+	    -values {"Center Distance" "Total Profile Shift"} \
+	    -width 15
+    } {}
+    itk_component add paramInputTypeCB {
+	::ttk::combobox $itk_component(paramGeneralFrame).inputTypeCB \
+	    -textvariable [::itcl::scope inputType] \
+	    -state readonly \
+	    -values {"Gear Ratio" "Number of Teeth"} \
+	    -width 15
+    } {}
+    itk_component add paramDriveTypeCB {
+	::ttk::combobox $itk_component(paramGeneralFrame).driveTypeCB \
+	    -textvariable [::itcl::scope driveType] \
+	    -state readonly \
+	    -values {"Pinion and Gear" "Pinion and Rack"} \
+	    -width 15
+    } {}
+    
+    itk_component add paramStrengthCalculationCB {
+	::ttk::checkbutton $itk_component(paramGeneralFrame).strengthCalculationCB \
+	    -text "Sterngth Calculation" \
+	    -variable [::itcl::scope strengthCalculation]
+    } {}
+    
+    itk_component add paramDoubleHelicalCB {
+	::ttk::checkbutton $itk_component(paramGeneralFrame).doubleHelicalCB \
+	    -text "Double Helical" \
+	    -variable [::itcl::scope doubleHelical]
+    } {}
     
     # Create the strength parameters label and frame
 	itk_component add paramStregthL {
@@ -535,9 +591,11 @@
     set col 0
     
     grid $itk_component(paramCommonL) -row $row -stick nsew
+    grid $itk_component(paramGeneralL) -row $row -column 2 -stick nsew
 	incr row
 	grid $itk_component(paramCommonFrame) -row $row -stick nsew -padx 10
 	grid $itk_component(separator1S) -row $row -column 1 -stick nsew 
+	grid $itk_component(paramGeneralFrame) -row $row -column 2 -stick nsew -padx 10
 	incr row
 	grid $itk_component(emptyL) -row $row -stick nsew
 	incr row
@@ -572,6 +630,22 @@
     grid $itk_component(paramTotalProfileShiftL) $itk_component(paramPressureAngleE) \
 	-row $row -stick nsew
 	
+	
+	set row 0
+	grid $itk_component(paramDesignGuideL) $itk_component(paramDesignGuideCB) \
+	-row $row -stick nsew
+    incr row
+    grid $itk_component(paramInputTypeL) $itk_component(paramInputTypeCB) \
+	-row $row -stick nsew
+    incr row
+    grid $itk_component(paramDriveTypeL) $itk_component(paramDriveTypeCB) \
+	-row $row -stick nsew
+	incr row
+    grid $itk_component(paramStrengthCalculationCB) \
+	-row $row -stick nsew
+	incr row
+    grid $itk_component(paramDoubleHelicalCB) \
+	-row $row -stick nsew
 	
 	set row 0
 	set padAmount 10
